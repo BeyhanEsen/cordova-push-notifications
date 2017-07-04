@@ -8,6 +8,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
@@ -113,8 +114,8 @@ public class GCMIntentService extends IntentService {
     // MESSAGE
     String message = extras.getString("message");
     message = message != null ? message : extras.getString("gcm.notification.body");
-    message = message != null ? message : "<missing message content>";
-    mBuilder.setContentText(message);
+    if(message != null)
+        mBuilder.setContentText(message);
 
     // BIG VIEW
     if (extras.containsKey("bigview")) {
@@ -124,43 +125,22 @@ public class GCMIntentService extends IntentService {
       }
     }
 
-    // SMALL ICON
-    String icon = extras.getString("icon");
-    if (icon == null) {
-      mBuilder.setSmallIcon(this.getApplicationInfo().icon);
+    // SMALL ICON, reads from drawable/notif.png
+    int rIcon = this.getResources().getIdentifier("notif", "drawable", this.getPackageName());
+    if (rIcon > 0) {
+      mBuilder.setSmallIcon(rIcon);
     } else {
-      String location = extras.getString("iconLocation");
-      location = location != null ? location : "drawable";
-      int rIcon = this.getResources().getIdentifier(icon.substring(0, icon.lastIndexOf('.')), location, this.getPackageName());
-      if (rIcon > 0) {
-        mBuilder.setSmallIcon(rIcon);
-      } else {
-        mBuilder.setSmallIcon(this.getApplicationInfo().icon);
-      }
+      mBuilder.setSmallIcon(this.getApplicationInfo().icon);
     }
+
 
     // ICON COLOR #RRGGBB or #AARRGGBB
     String iconColor = extras.getString("iconColor");
     if (iconColor != null) {
       mBuilder.setColor(Color.parseColor(iconColor));
     }
-
-    // LARGE ICON
-    // TODO: http://stackoverflow.com/questions/24840282/load-image-from-url-in-notification-android
-    //    String image = extras.getString("image");
-    //    Bitmap largeIcon;
-    //    if (image != null) {
-    //      if (image.startsWith("http")) {
-    //        largeIcon = getBitmapFromURL(image);
-    //      } else {
-    //        //will play /platform/android/res/raw/image
-    //        largeIcon = BitmapFactory.decodeResource(getResources(), this.getResources().getIdentifier(image, null, null));
-    //      }
-    //
-    //      if (largeIcon != null) {
-    //        mBuilder.setLargeIcon(largeIcon);
-    //      }
-    //    }
+    //Set large icon, app.icon
+    mBuilder.setLargeIcon(BitmapFactory.decodeResource(this.getResources(), this.getApplicationInfo().icon));
 
     // DEFAULTS (LIGHT, SOUND, VIBRATE)
     int defaults = Notification.DEFAULT_ALL;
