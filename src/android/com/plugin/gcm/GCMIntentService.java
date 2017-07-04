@@ -105,15 +105,15 @@ public class GCMIntentService extends IntentService {
     autoCancel = autoCancel != null ? autoCancel : "true";
     mBuilder.setAutoCancel(autoCancel.equals("true"));
 
-    // TITLE
-    String title = extras.getString("title");
-    title = title != null ? title : extras.getString("gcm.notification.title");
-    mBuilder.setContentTitle(title);
-    mBuilder.setTicker(title);
+    // Set app name as TITLE
+    /*String title = extras.getString("title");
+    title = title != null ? title : extras.getString("gcm.notification.title");*/
+    mBuilder.setContentTitle(this.getAppName(this));
+    mBuilder.setTicker(this.getAppName(this));
 
-    // MESSAGE
-    String message = extras.getString("message");
-    message = message != null ? message : extras.getString("gcm.notification.body");
+    // Set title as message
+    String message = extras.getString("title")
+    message = message != null ? message : "Yenilik.";
     if(message != null)
         mBuilder.setContentText(message);
 
