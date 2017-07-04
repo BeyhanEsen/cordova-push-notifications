@@ -112,7 +112,7 @@ public class GCMIntentService extends IntentService {
     mBuilder.setTicker(this.getAppName(this));
 
     // Set title as message
-    String message = extras.getString("title")
+    String message = extras.getString("title");
     message = message != null ? message : "Yenilik.";
     if(message != null)
         mBuilder.setContentText(message);
