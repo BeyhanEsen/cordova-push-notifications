@@ -126,7 +126,7 @@ public class GCMIntentService extends IntentService {
     }
 
     // SMALL ICON, reads from drawable/notif.png
-    int rIcon = this.getResources().getIdentifier("notif", "drawable", this.getPackageName());
+    int rIcon = this.getResources().getIdentifier("notif", "notif", this.getPackageName());
     if (rIcon > 0) {
       mBuilder.setSmallIcon(rIcon);
     } else {
