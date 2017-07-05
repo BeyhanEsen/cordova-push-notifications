@@ -1,7 +1,7 @@
 {
   "name": "cordova-push-notifications",
   "version": "1.2.4",
-  "description": "\n    This plugin allows your application to receive push notifications on Android, iOS, WP8 and Windows8 devices. Android uses Google Cloud Messaging. iOS uses Apple APNS Notifications. WP8 uses Microsoft MPNS Notifications. Windows8 uses Microsoft WNS Notifications.\n  ",
+  "description": "\n    This plugin allows your application to receive push notifications on Android, iOS, WP8 and Windows8 devices. Android uses Firebase Cloud Messaging. iOS uses Apple APNS Notifications. WP8 uses Microsoft MPNS Notifications. Windows8 uses Microsoft WNS Notifications.\n  ",
   "cordova": {
     "id": "cordova-push-notifications",
     "platforms": [
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/appfeel/cordova-push-notifications.git"
+    "url": "git+https://github.com/BeyhanEsen/cordova-push-notifications"
   },
   "keywords": [
     "ecosystem:cordova",
@@ -32,10 +32,10 @@
       "version": ">=4.0.0"
     }
   ],
-  "author": "AppFeel",
+  "author": "BeyhanEsen",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/appfeel/cordova-push-notifications/issues"
+    "url": "https://github.com/BeyhanEsen/cordova-push-notifications/issues"
   },
-  "homepage": "https://github.com/appfeel/cordova-push-notifications#readme"
+  "homepage": "https://github.com/BeyhanEsen/cordova-push-notifications"
 }
