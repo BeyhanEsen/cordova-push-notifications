@@ -111,9 +111,9 @@ public class GCMIntentService extends IntentService {
     mBuilder.setContentTitle(this.getAppName(this));
     mBuilder.setTicker(this.getAppName(this));
 
-    // Set title as message
-    String message = extras.getString("title");
-    message = message != null ? message : "Yenilik.";
+    // Set alert as the content text
+    String message = extras.getString("alert");
+    message = message != null ? message : "Bildirim, detay için tıklayınız";
     if(message != null)
         mBuilder.setContentText(message);
 
