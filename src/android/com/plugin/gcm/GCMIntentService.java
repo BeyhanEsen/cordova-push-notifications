@@ -112,10 +112,8 @@ public class GCMIntentService extends IntentService {
     mBuilder.setContentTitle(this.getAppName(this));
     mBuilder.setTicker(this.getAppName(this));
 
-    // Set message as the content text
-    String message = extras.getString("message");
-    Log.d("Notification",extras.toString());
-    message = message != null ? message : extras.getString("gcm.notification.body");
+    // Set content text as one signal message(alert by default)
+    String message = extras.getString("alert");
     message = message != null ? message : "Click for details.";
     if(message != null)
         mBuilder.setContentText(message);
