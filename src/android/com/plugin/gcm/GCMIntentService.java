@@ -113,7 +113,7 @@ public class GCMIntentService extends IntentService {
 
     // Set message as the content text
     String message = extras.getString("message");
-    message = message != null ? message : extras.getString("gcm.notification.body")
+    message = message != null ? message : extras.getString("gcm.notification.body");
     message = message != null ? message : "Click for details.";
     if(message != null)
         mBuilder.setContentText(message);
