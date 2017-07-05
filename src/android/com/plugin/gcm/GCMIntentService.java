@@ -17,6 +17,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
@@ -113,7 +114,7 @@ public class GCMIntentService extends IntentService {
 
     // Set message as the content text
     String message = extras.getString("message");
-    Log.d("Payload",extras.toString());
+    Log.d("Notification",extras.toString());
     message = message != null ? message : extras.getString("gcm.notification.body");
     message = message != null ? message : "Click for details.";
     if(message != null)
