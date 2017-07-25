@@ -145,11 +145,12 @@ public class PushPlugin extends CordovaPlugin {
    * Sends a json object to the client as parameter to a method which is defined in gECB.
    */
   public static void sendJavascript(JSONObject _json) {
-    String _d = "javascript:" + gECB + "(" + _json.toString() + ")";;
+    final String _d;
     try {
       _d = "javascript:" + gECB + "(" + _json.toString(2) + ")";
     } catch (JSONException e) {
       e.printStackTrace();
+      _d  = "javascript:" + gECB + "(" + _json.toString() + ")";
     }
     Log.v(TAG, "sendJavascript: " + _d);
 
