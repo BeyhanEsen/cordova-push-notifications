@@ -255,6 +255,10 @@ public class PushPlugin extends CordovaPlugin {
           }
         }
       } // while
+
+      jsondata.remove("custom");
+      jsondata.remove("pri");
+      jsondata.remove("google.message_id");
       json.put("payload", jsondata);
 
       Log.v(TAG, "extrasToJSON: " + json.toString());
