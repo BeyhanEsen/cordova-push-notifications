@@ -236,7 +236,7 @@ public class PushPlugin extends CordovaPlugin {
             String strValue = (String) value;
             if (strValue.startsWith("{")) {
               try {
-                JSONObject json2 = new JSONObject(strValue);
+                JSONObject json2 = new JSONObject(strValue.replaceAll("\\s+",""));
                 jsondata.put(key, json2);
               } catch (Exception e) {
                 jsondata.put(key, value);
